@@ -204,24 +204,34 @@
             Informações do Abrigo
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="shelterName"
-              ngModel
-              #shelterName="ngModel"
-              class="form-input"
-              placeholder="Nome do Abrigo"
-              required
-            />
-            <input
-              type="text"
-              name="city"
-              ngModel
-              #city="ngModel"
-              class="form-input"
-              placeholder="Cidade (Ex: São Paulo)"
-              required
-            />
+            <div class="flex flex-col gap-1.5">
+              <input
+                type="text"
+                name="shelterName"
+                ngModel
+                #shelterName="ngModel"
+                class="form-input"
+                placeholder="Nome do Abrigo"
+                required
+              />
+              @if((shelterName.touched || petForm.submitted) && shelterName.invalid) {
+              <p class="text-terracotta text-xs font-medium ml-1">🐾 O abrigo é obrigatório.</p>
+              }
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <input
+                type="text"
+                name="city"
+                ngModel
+                #city="ngModel"
+                class="form-input"
+                placeholder="Cidade (Ex: São Paulo)"
+                required
+              />
+              @if((city.touched || petForm.submitted) && city.invalid) {
+              <p class="text-terracotta text-xs font-medium ml-1">🐾 A cidade é obrigatória.</p>
+              }
+            </div>
           </div>
         </div>
 
