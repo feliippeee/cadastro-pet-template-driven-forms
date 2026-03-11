@@ -43,12 +43,17 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <select name="species" [ngModel]="''" class="form-input" required>
-              <option value="" disabled selected>Espécie</option>
-              <option value="dog">Cão</option>
-              <option value="cat">Gato</option>
-              <option value="bird">Pássaro</option>
-            </select>
+            <div class="flex flex-col gap-1.5">
+              <select name="species" [ngModel]="''" #species="ngModel" class="form-input" required>
+                <option value="" disabled selected>Espécie</option>
+                <option value="dog">Cão</option>
+                <option value="cat">Gato</option>
+                <option value="bird">Pássaro</option>
+              </select>
+              @if((species.touched || petForm.submitted) && species.invalid) {
+              <p class="text-terracotta text-xs font-medium ml-1">🐾 A espécie é obrigatória.</p>
+              }
+            </div>
 
             <input
               type="number"
