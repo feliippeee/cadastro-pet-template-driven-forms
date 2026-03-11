@@ -111,9 +111,10 @@
                   type="radio"
                   name="size"
                   value="small"
-                  class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage"
+                  class="form-radio"
                   required
                   [ngModel]="null"
+                  #size="ngModel"
                 />
                 Pequeno
               </label>
@@ -124,7 +125,7 @@
                   type="radio"
                   name="size"
                   value="medium"
-                  class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage"
+                  class="form-radio"
                   required
                   [ngModel]="null"
                 />
@@ -137,12 +138,19 @@
                   type="radio"
                   name="size"
                   value="large"
-                  class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage"
+                  class="form-radio"
                   required
                   [ngModel]="null"
                 />
                 Grande
               </label>
+            </div>
+            <div class="mt-1.5">
+              @if((size.touched || petForm.submitted) && size.invalid) {
+              <p class="text-terracotta text-xs font-medium ml-1">
+                🐾 O porte do pet é obrigatório.
+              </p>
+              }
             </div>
           </div>
 
