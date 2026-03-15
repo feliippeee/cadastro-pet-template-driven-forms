@@ -1,15 +1,23 @@
+{{ petData() | json }}
 <div class="min-h-screen bg-pastel-green p-4 md:p-8 flex flex-col items-center justify-center">
   <div
     class="max-w-md w-full bg-white rounded-[2rem] overflow-hidden shadow-xl border border-stone-100"
   >
     <div class="h-56 bg-[#E8D8C3] flex items-center justify-center relative">
-      @switch (especie()) { @case ('dog') {
-      <span class="text-7xl drop-shadow-sm transition-transform hover:scale-110">🐶</span> } @case
-      ('cat') {
-      <span class="text-7xl drop-shadow-sm transition-transform hover:scale-110">🐱</span> } @case
-      ('bird') {
-      <span class="text-7xl drop-shadow-sm transition-transform hover:scale-110">🦜</span> }
-      @default { <span class="text-7xl drop-shadow-sm">🐾</span> } }
+      @switch (especie()) {
+        @case ('dog') {
+          <span class="text-7xl drop-shadow-sm transition-transform hover:scale-110">🐶</span>
+        }
+        @case ('cat') {
+          <span class="text-7xl drop-shadow-sm transition-transform hover:scale-110">🐱</span>
+        }
+        @case ('bird') {
+          <span class="text-7xl drop-shadow-sm transition-transform hover:scale-110">🦜</span>
+        }
+        @default {
+          <span class="text-7xl drop-shadow-sm">🐾</span>
+        }
+      }
     </div>
 
     <div class="p-6 md:p-8">
