@@ -27,15 +27,23 @@
               required
               minlength="3"
             />
-            @if (true) {
-              <p class="text-terracotta text-xs font-medium ml-1">
-                🐾 O nome é obrigatório (mín. 3 letras).
-              </p>
+            @if ((petName.touched || petForm.submitted) && petName.invalid) {
+              <!-- Mensagens de erro -->
+              @if (petName.hasError('required')) {
+                <p class="text-terracotta text-xs font-medium ml-1">
+                  🐾 O nome é obrigatório (mín. 3 letras).
+                </p>
+              } @else if (petName.hasError('minlength')) {
+                <p class="text-terracotta text-xs font-medium ml-1">
+                  🐾 O nome deve ter no mínimo 3 letras.
+                </p>
+              }
+              <!-- Fim mensagens de erro -->
             }
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <select name="species" ngModel class="form-input" required>
+            <select name="species" [ngModel]="''" class="form-input" required>
               <option value="" disabled selected>Espécie</option>
               <option value="dog">Cão</option>
               <option value="cat">Gato</option>
@@ -87,6 +95,7 @@
                   value="small"
                   class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage"
                   required
+                  [ngModel]="null"
                 />
                 Pequeno
               </label>
@@ -99,6 +108,7 @@
                   value="medium"
                   class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage"
                   required
+                  [ngModel]="null"
                 />
                 Médio
               </label>
@@ -111,6 +121,7 @@
                   value="large"
                   class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage"
                   required
+                  [ngModel]="null"
                 />
                 Grande
               </label>
@@ -212,7 +223,7 @@
         <button
           type="button"
           class="text-stone-400 hover:text-stone-600 underline text-sm md:text-base cursor-pointer font-medium transition-colors"
-          (click)="petForm.resetForm({ species: '' })"
+          (click)="petForm.resetForm({ species: '', size: null })"
         >
           Limpar formulário
         </button>
